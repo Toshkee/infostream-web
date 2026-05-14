@@ -69,29 +69,14 @@ const stacks: Stack[] = [
   },
 ];
 
-export function Technologies() {
+export function TechGrid() {
   return (
-    <section id="technologies" className="bg-bone">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-28 md:py-40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
-          <div className="lg:col-span-4">
-            <div className="eyebrow">Technologies</div>
-            <h2 className="display-lg mt-6 text-ink max-w-[14ch]">
-              Boring stacks,{" "}
-              <span className="italic font-light text-accent">
-                chosen carefully
-              </span>
-              .
-            </h2>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6 lg:pt-3">
-            <p className="text-[1.1rem] leading-relaxed text-ink/75 max-w-2xl">
-              The systems we operate must still work in fifteen years &mdash;
-              under different governments, different staff, and different
-              hardware. So we choose platforms with decade-scale support,
-              audit-grade observability, and large pools of qualified engineers
-              in the region.
-            </p>
+    <section className="bg-bone">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32">
+        <div className="flex items-end justify-between mb-14">
+          <div className="eyebrow">The four stacks</div>
+          <div className="hidden md:block text-[0.82rem] text-muted">
+            {stacks.length} primary &middot; updated April 2026
           </div>
         </div>
 
