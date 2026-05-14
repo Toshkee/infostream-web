@@ -1,9 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
-import { Statement } from "@/components/sections/Statement";
 import { WhatWeDo } from "@/components/sections/WhatWeDo";
-import { Process } from "@/components/sections/Process";
-import { Capabilities } from "@/components/sections/Capabilities";
 import { CTA } from "@/components/sections/CTA";
 
 export default function Home() {
@@ -11,10 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <TrustStrip />
-      <Statement />
       <WhatWeDo />
-      <Process />
-      <Capabilities />
       <CTA />
     </>
   );

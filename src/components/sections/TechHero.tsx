@@ -11,25 +11,24 @@ export function TechHero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10 flex items-center gap-3 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-muted"
+          className="mb-12 flex items-center gap-3 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-muted"
         >
-          <Link
-            href="/"
-            className="hover:text-ink transition-colors"
-          >
+          <Link href="/" className="hover:text-ink transition-colors">
             Home
           </Link>
           <span className="text-line">/</span>
           <span className="text-ink">Technologies</span>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+        {/* Headline block */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-8"
+            className="lg:col-span-7"
           >
+            <div className="eyebrow mb-6">Stacks we operate</div>
             <h1 className="display-xl text-ink max-w-[16ch]">
               The platforms behind systems that{" "}
               <span className="italic font-light text-accent">
@@ -37,43 +36,23 @@ export function TechHero() {
               </span>
               .
             </h1>
+          </motion.div>
 
-            <p className="mt-10 max-w-xl text-lg md:text-[1.2rem] leading-relaxed text-ink/75">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 lg:pt-4"
+          >
+            <p className="max-w-xl text-lg md:text-[1.15rem] leading-relaxed text-ink/75">
               Long-lived stacks, chosen for decade-scale support, audit-grade
               observability, and large pools of qualified engineers in the
               region. We don&rsquo;t chase frameworks &mdash; we operate them
               for fifteen years.
             </p>
           </motion.div>
-
-          <motion.aside
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-4 lg:pb-6"
-          >
-            <div className="border-l border-line pl-6 lg:pl-8 space-y-7">
-              <div>
-                <div className="eyebrow mb-2">Primary</div>
-                <div className="text-2xl font-display font-light text-ink">
-                  Oracle 23ai
-                </div>
-              </div>
-              <div>
-                <div className="eyebrow mb-2">Stacks</div>
-                <div className="text-[0.95rem] text-ink">
-                  4 primary &middot; T01 &mdash; T04
-                </div>
-              </div>
-              <div>
-                <div className="eyebrow mb-2">Security</div>
-                <div className="text-[0.95rem] text-ink">
-                  Bitdefender Enterprise
-                </div>
-              </div>
-            </div>
-          </motion.aside>
         </div>
+
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-line-soft" />

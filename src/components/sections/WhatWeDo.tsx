@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const pillars = [
   {
@@ -14,6 +15,7 @@ const pillars = [
       "Regulatory reporting",
       "Anti-fraud & compliance",
     ],
+    illustration: "/images/illustrations/data.svg",
   },
   {
     number: "02",
@@ -26,6 +28,7 @@ const pillars = [
       "Identity & document systems",
       "Inter-ministry data exchange",
     ],
+    illustration: "/images/illustrations/web-app.svg",
   },
   {
     number: "03",
@@ -38,6 +41,7 @@ const pillars = [
       "Incident response & monitoring",
       "Compliance audits",
     ],
+    illustration: "/images/illustrations/server.svg",
   },
 ];
 
@@ -77,7 +81,7 @@ export function WhatWeDo() {
                 delay: i * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-14 border-b border-line-soft"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-14 border-b border-line-soft items-center"
             >
               <div className="lg:col-span-2">
                 <div className="font-mono text-[0.85rem] text-muted">
@@ -85,7 +89,7 @@ export function WhatWeDo() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-4">
                 <h3 className="display-lg !text-[clamp(1.75rem,2.5vw+0.5rem,2.75rem)] text-ink">
                   {p.title}
                 </h3>
@@ -94,7 +98,7 @@ export function WhatWeDo() {
                 </p>
               </div>
 
-              <div className="lg:col-span-5 lg:pt-3">
+              <div className="lg:col-span-4 lg:pt-3">
                 <ul className="space-y-3">
                   {p.detail.map((d) => (
                     <li
@@ -106,6 +110,18 @@ export function WhatWeDo() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="hidden lg:flex lg:col-span-2 justify-end">
+                <div className="relative w-36 h-28">
+                  <Image
+                    src={p.illustration}
+                    alt=""
+                    fill
+                    className="object-contain"
+                    aria-hidden
+                  />
+                </div>
               </div>
             </motion.div>
           ))}
