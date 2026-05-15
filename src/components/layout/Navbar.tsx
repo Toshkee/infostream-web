@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "What we do", href: "/#what-we-do" },
+  { label: "Services", href: "/services" },
   { label: "Technologies", href: "/technologies" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
 ];
 
 export function Navbar() {
