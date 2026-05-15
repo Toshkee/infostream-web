@@ -1,139 +1,100 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import type { Dictionary } from "@/lib/i18n/types";
 
-const services = [
-  {
-    number: "01",
-    title: "Financial software",
-    description:
-      "We build the systems that sit at the centre of financial infrastructure — core banking engines, reconciliation pipelines, and regulatory reporting platforms. Built for audit trails, transaction volume, and the operational demands of central banks and finance ministries.",
-    capabilities: [
-      {
-        name: "Core banking & ledger",
-        body: "Multi-currency ledger systems designed for continuous operation — real-time posting, end-of-day reconciliation, and full audit history.",
-      },
-      {
-        name: "Reconciliation & settlement",
-        body: "Automated matching of high-volume transaction files across counterparties, clearing houses, and internal books.",
-      },
-      {
-        name: "Regulatory reporting",
-        body: "Structured report generation for central-bank submission: balance sheets, liquidity ratios, and custom regulatory templates.",
-      },
-      {
-        name: "Anti-fraud & compliance",
-        body: "Rule-based and threshold-triggered controls integrated into payment flows to meet AML and KYC obligations.",
-      },
-    ],
-    clients: "Ministry of Finance · Central Bank of Montenegro · Tax Authority",
-  },
-  {
-    number: "02",
-    title: "Registers & data systems",
-    description:
-      "National registers are systems of record — every citizen, every transaction, every obligation. We design and operate them with the stability and access-control requirements that public institutions demand, including inter-ministry data exchange at the infrastructure level.",
-    capabilities: [
-      {
-        name: "Tax & revenue registers",
-        body: "End-to-end tax administration: taxpayer registration, obligation tracking, assessment, collection, and arrears management.",
-      },
-      {
-        name: "Pension & social systems",
-        body: "Contribution history, eligibility calculation, and benefit disbursement for national pension and social-insurance programs.",
-      },
-      {
-        name: "Identity & document systems",
-        body: "Secure registers for national identity documents, with biometric data handling and integration to border-control systems.",
-      },
-      {
-        name: "Inter-ministry data exchange",
-        body: "Secure service buses and API gateways that let ministries share data without duplicating it — single source of truth, controlled access.",
-      },
-    ],
-    clients: "Ministry of Interior · Parliament ERP · Ministry of Defence",
-  },
-  {
-    number: "03",
-    title: "Security & compliance",
-    description:
-      "Enterprise security for organisations that cannot afford an incident. We deploy and manage Bitdefender's enterprise platform across endpoints, servers, and networks — and run the ISO 27001 management system that keeps the controls documented, tested, and current.",
-    capabilities: [
-      {
-        name: "Bitdefender enterprise deployment",
-        body: "Full-stack deployment across endpoint, server, and network layers — policy management, threat intelligence feeds, and centralised dashboards.",
-      },
-      {
-        name: "ISO 27001 management",
-        body: "Gap assessment, control implementation, risk register maintenance, and preparation for third-party certification audits.",
-      },
-      {
-        name: "Incident response & monitoring",
-        body: "SIEM integration, alert triage, and defined playbooks for containment and recovery when an incident occurs.",
-      },
-      {
-        name: "Compliance audits",
-        body: "Structured reviews against GDPR, NIS2, and sector-specific requirements — with remediation roadmaps, not just findings.",
-      },
-    ],
-    clients: "ISO 27001 certified · ISO 9001 certified · Bitdefender partner",
-  },
-];
+export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"] }) {
+  const services = dict;
+  const [open, setOpen] = useState<string>("01");
 
-export function ServicesDetail() {
   return (
     <section className="bg-bone">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 pb-28 md:pb-40">
         <div className="border-t border-line-soft">
-          {services.map((s) => (
-            <motion.div
-              key={s.number}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="py-20 border-b border-line-soft"
-            >
-              {/* Header row */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 mb-14">
-                <div className="lg:col-span-1 pt-1">
-                  <span className="font-mono text-[0.78rem] text-muted tracking-[0.08em]">
+          {services.map((s) => {
+            const isOpen = open === s.number;
+            return (
+              <div key={s.number} className="border-b border-line-soft">
+                {/* Row trigger */}
+                <button
+                  type="button"
+                  onClick={() => setOpen(isOpen ? "" : s.number)}
+                  className="group w-full text-left py-8 grid grid-cols-12 gap-6 items-center"
+                >
+                  <span className="col-span-1 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-accent">
                     {s.number}
                   </span>
-                </div>
-                <div className="lg:col-span-5">
-                  <h2 className="text-[clamp(1.8rem,2.5vw+0.5rem,3rem)] font-serif font-normal leading-tight tracking-tight text-ink">
+
+                  <h2 className={`col-span-9 font-display font-light text-[clamp(1.6rem,3vw,2.6rem)] leading-tight tracking-tight transition-colors duration-200 ${
+                    isOpen ? "text-accent" : "text-ink group-hover:text-ink/70"
+                  }`}>
                     {s.title}
                   </h2>
-                  <p className="mt-6 text-[1.05rem] leading-relaxed text-ink/70 max-w-lg">
-                    {s.description}
-                  </p>
-                </div>
-                <div className="lg:col-span-4 lg:col-start-9 flex items-end">
-                  <p className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-muted leading-loose">
-                    {s.clients}
-                  </p>
-                </div>
-              </div>
 
-              {/* Capability grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-line-soft/40 border border-line-soft/40">
-                {s.capabilities.map((c) => (
-                  <div
-                    key={c.name}
-                    className="bg-bone p-8 flex flex-col gap-4"
-                  >
-                    <h3 className="text-[0.92rem] font-medium text-ink tracking-tight">
-                      {c.name}
-                    </h3>
-                    <p className="text-[0.88rem] leading-relaxed text-ink/60">
-                      {c.body}
-                    </p>
+                  <div className="col-span-2 flex justify-end">
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className={`text-[1.4rem] font-light leading-none transition-colors duration-200 ${
+                        isOpen ? "text-accent" : "text-ink/30 group-hover:text-ink/50"
+                      }`}
+                    >
+                      +
+                    </motion.span>
                   </div>
-                ))}
+                </button>
+
+                {/* Expandable content */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-14 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+                        {/* Description + clients */}
+                        <div className="lg:col-span-4 lg:col-start-2">
+                          <p className="text-[1.05rem] leading-relaxed text-ink/65 mb-8">
+                            {s.description}
+                          </p>
+                          <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-accent/70 leading-loose border-t border-line-soft pt-5">
+                            {s.clients}
+                          </p>
+                        </div>
+
+                        {/* Capability list */}
+                        <ul className="lg:col-span-5 lg:col-start-7 space-y-0 divide-y divide-line-soft/60">
+                          {s.capabilities.map((c, i) => (
+                            <motion.li
+                              key={c.name}
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.35, delay: 0.1 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                              className="py-5"
+                            >
+                              <h3 className="text-[0.9rem] font-medium text-ink mb-1.5">
+                                {c.name}
+                              </h3>
+                              <p className="text-[0.85rem] leading-relaxed text-ink/50">
+                                {c.body}
+                              </p>
+                            </motion.li>
+                          ))}
+                        </ul>
+
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

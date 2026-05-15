@@ -68,11 +68,11 @@ export function Process() {
             >
               <span
                 aria-hidden
-                className="pointer-events-none absolute left-0 top-0 h-px w-0 bg-ink transition-[width] duration-500 ease-out group-hover:w-full"
+                className="pointer-events-none absolute left-0 top-0 h-px w-0 bg-accent transition-[width] duration-500 ease-out group-hover:w-full"
               />
 
               <div className="lg:col-span-2 flex items-baseline gap-4">
-                <span className="font-mono text-[0.78rem] tracking-[0.1em] text-muted">
+                <span className="font-mono text-[0.78rem] tracking-[0.1em] text-accent">
                   {p.number}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export function Process() {
               </div>
 
               <div className="lg:col-span-1 lg:text-right">
-                <span className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-muted whitespace-nowrap">
+                <span className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-accent/70 whitespace-nowrap">
                   {p.duration}
                 </span>
               </div>

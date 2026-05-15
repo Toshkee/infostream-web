@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette: warm white + beige + deep ink + quiet olive accent */
-  --color-bone: #fbf8ee;
-  --color-bone-soft: #ffffff;
-  --color-cream: #ece2c8;
-  --color-cream-soft: #f4ecd6;
-  --color-cream-deep: #e0d5b5;
-  --color-ink: #14130f;
-  --color-ink-soft: #2a2823;
-  --color-muted: #6b675c;
-  --color-line: #c9c1ad;
-  --color-line-soft: #e2dac4;
-  --color-accent: #3a4a2a;
-  --color-accent-soft: #5a6d44;
+  /* Palette: warm off-white + deep wine-black + burgundy accent */
+  --color-bone: #f8f4f5;
+  --color-bone-soft: #fdf9fa;
+  --color-cream: #f0dde1;
+  --color-cream-soft: #f6eaec;
+  --color-cream-deep: #ddbec4;
+  --color-ink: #180d10;
+  --color-ink-soft: #2e1520;
+  --color-muted: #7a5060;
+  --color-line: #c4909a;
+  --color-line-soft: #e8d0d4;
+  --color-accent: #8c2040;
+  --color-accent-soft: #a83055;
 
   /* Semantic */
   --color-background: var(--color-bone);
   --color-foreground: var(--color-ink);
 
-  --font-sans: var(--font-dm-sans);
+  --font-sans: var(--font-poppins);
   --font-mono: var(--font-dm-mono);
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-poppins);
 }
 
 @layer base {
@@ -45,18 +45,18 @@
 
 @utility display-xl {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(2.75rem, 6vw + 1rem, 6.5rem);
-  line-height: 0.96;
-  letter-spacing: -0.035em;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 @utility display-lg {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(2.25rem, 4vw + 1rem, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
 @utility eyebrow {
@@ -89,7 +89,36 @@
   to   { transform: translateX(-50%); }
 }
 
+@keyframes streak-right {
+  0%   { transform: translateX(-80%) skewX(-8deg); opacity: 0; }
+  8%   { opacity: 0.18; }
+  92%  { opacity: 0.18; }
+  100% { transform: translateX(120vw) skewX(-8deg); opacity: 0; }
+}
+
+@keyframes streak-left {
+  0%   { transform: translateX(80%) skewX(8deg); opacity: 0; }
+  8%   { opacity: 0.15; }
+  92%  { opacity: 0.15; }
+  100% { transform: translateX(-120vw) skewX(8deg); opacity: 0; }
+}
+
+@keyframes streak-rise {
+  0%   { transform: translateX(-60%) translateY(60px) skewX(-12deg); opacity: 0; }
+  10%  { opacity: 0.12; }
+  90%  { opacity: 0.12; }
+  100% { transform: translateX(110vw) translateY(-40px) skewX(-12deg); opacity: 0; }
+}
+
 @utility marquee-track {
   animation: marquee 38s linear infinite;
   will-change: transform;
 }
+
+@utility streak-a { animation: streak-right 9s  ease-in-out infinite;       will-change: transform; }
+@utility streak-b { animation: streak-right 13s ease-in-out infinite 3.5s;  will-change: transform; }
+@utility streak-c { animation: streak-right 11s ease-in-out infinite 7s;    will-change: transform; }
+@utility streak-d { animation: streak-left  14s ease-in-out infinite 1.5s;  will-change: transform; }
+@utility streak-e { animation: streak-left  10s ease-in-out infinite 5s;    will-change: transform; }
+@utility streak-f { animation: streak-rise  15s ease-in-out infinite 2s;    will-change: transform; }
+@utility streak-g { animation: streak-rise  12s ease-in-out infinite 8s;    will-change: transform; }

@@ -2,110 +2,40 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { Dictionary } from "@/lib/i18n/types";
 
-type Stack = {
-  id: string;
-  eyebrow: string;
-  title: string;
-  blurb: string;
-  items: string[];
+type Visual = {
   illustration: string;
-  imageAlt: string;
-  tone: {
-    panel: string; // tinted background for the image panel
-    accent: string; // brand colour (text + bullet)
-    accentSoft: string; // soft border/bg tint
-  };
+  tone: { panel: string; accent: string; accentSoft: string };
 };
 
-const stacks: Stack[] = [
-  {
-    id: "tech-oracle",
-    eyebrow: "T01 — Primary database",
-    title: "Oracle",
-    blurb:
-      "Our system of record for transactional and registry workloads. Where audit, durability, and a deep PL/SQL ecosystem aren't optional, this is where it lives.",
-    items: [
-      "Oracle Database 19c & 23ai",
-      "Oracle APEX",
-      "PL/SQL development",
-      "Oracle Forms modernisation",
-      "GoldenGate replication",
-    ],
-    illustration: "/images/illustrations/oracle.svg",
-    imageAlt: "Oracle database illustration",
-    tone: {
-      panel: "bg-[#ffe2dd]",
-      accent: "text-[#e8332a]",
-      accentSoft: "bg-[#e8332a]",
-    },
+const visuals: Record<string, Visual> = {
+  "tech-oracle": {
+    illustration: "/images/illustrations/oracle.png",
+    tone: { panel: "bg-[#ffe2dd]", accent: "text-[#e8332a]", accentSoft: "bg-[#e8332a]" },
   },
-  {
-    id: "tech-dotnet",
-    eyebrow: "T02 — Application platform",
-    title: ".NET",
-    blurb:
-      "C# and the .NET runtime power most of the application-side logic across ministries: services, integrations, and the long-running APIs that sit in front of Oracle.",
-    items: [
-      "C# and .NET 8",
-      "ASP.NET Core APIs",
-      "Entity Framework Core",
-      "Active Directory integration",
-      "Windows & Linux deployment",
-    ],
-    illustration: "/images/illustrations/dotnet.jpg",
-    imageAlt: ".NET application platform illustration",
-    tone: {
-      panel: "bg-[#ede1ff]",
-      accent: "text-[#7c3aed]",
-      accentSoft: "bg-[#7c3aed]",
-    },
+  "tech-dotnet": {
+    illustration: "/images/illustrations/dotnetmvc.png",
+    tone: { panel: "bg-[#ede1ff]", accent: "text-[#7c3aed]", accentSoft: "bg-[#7c3aed]" },
   },
-  {
-    id: "tech-languages",
-    eyebrow: "T03 — Languages & frameworks",
-    title: "Long-lived stacks",
-    blurb:
-      "Where we don't standardise on .NET, we standardise on languages with a decade-plus production history and large regional talent pools. Boring is a feature.",
-    items: [
-      "Java / Spring Boot",
-      "TypeScript / Node.js",
-      "Python for data & ETL",
-      "React / Next.js",
-      "PostgreSQL where Oracle isn't required",
-    ],
+  "tech-languages": {
     illustration: "/images/illustrations/dashboard.svg",
-    imageAlt: "Languages and frameworks illustration",
-    tone: {
-      panel: "bg-[#e7f5cc]",
-      accent: "text-[#4d7a1f]",
-      accentSoft: "bg-[#4d7a1f]",
-    },
+    tone: { panel: "bg-[#e7f5cc]", accent: "text-[#4d7a1f]", accentSoft: "bg-[#4d7a1f]" },
   },
-  {
-    id: "tech-security",
-    eyebrow: "T04 — Infrastructure & security",
-    title: "Security & operations",
-    blurb:
-      "Sovereign hosting, ISO 27001 controls, and Bitdefender at every layer. Continuity drills are run, not promised — every system has a rehearsed path back.",
-    items: [
-      "Bitdefender GravityZone (endpoint + network)",
-      "Linux (RHEL / Oracle Linux)",
-      "Kubernetes & containerisation",
-      "GitLab CI/CD pipelines",
-      "Backup, DR, and continuity drills",
-    ],
+  "tech-security": {
     illustration: "/images/illustrations/server.svg",
-    imageAlt: "Infrastructure and security illustration",
-    tone: {
-      panel: "bg-[#d8e8ff]",
-      accent: "text-[#2563eb]",
-      accentSoft: "bg-[#2563eb]",
-    },
+    tone: { panel: "bg-[#d8e8ff]", accent: "text-[#2563eb]", accentSoft: "bg-[#2563eb]" },
   },
-];
+};
 
-export function TechGrid() {
+const FALLBACK: Visual = {
+  illustration: "/images/illustrations/server.svg",
+  tone: { panel: "bg-bone", accent: "text-accent", accentSoft: "bg-accent" },
+};
+
+export function TechGrid({ dict }: { dict: Dictionary["tech"]["grid"] }) {
+  const stacks = dict.map((s) => ({ ...s, ...(visuals[s.id] ?? FALLBACK) }));
+
   return (
     <section className="bg-bone">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32">
@@ -126,7 +56,6 @@ export function TechGrid() {
                 className="group rounded-2xl border border-line-soft bg-bone-soft overflow-hidden scroll-mt-24"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  {/* Image panel */}
                   <div
                     className={`relative h-72 md:h-[24rem] lg:h-auto lg:col-span-7 ${s.tone.panel} overflow-hidden ${
                       imageRight
@@ -138,24 +67,20 @@ export function TechGrid() {
                       src={s.illustration}
                       alt={s.imageAlt}
                       fill
-                      loading="lazy"
+                      {...(i === 0
+                        ? { priority: true, loading: "eager" as const }
+                        : { loading: "lazy" as const })}
                       sizes="(min-width: 1024px) 58vw, 100vw"
                       className="object-contain object-center p-10 md:p-14 transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                   </div>
 
-                  {/* Caption panel */}
                   <div
                     className={`lg:col-span-5 flex flex-col justify-between p-8 md:p-12 ${
                       imageRight ? "lg:order-1" : "lg:order-2"
                     }`}
                   >
                     <div>
-                      <div
-                        className={`font-mono text-[0.7rem] uppercase tracking-[0.18em] mb-4 ${s.tone.accent}`}
-                      >
-                        {s.eyebrow}
-                      </div>
                       <h3 className="font-display text-[clamp(2rem,2.5vw+0.75rem,3rem)] font-light tracking-tight text-ink leading-[1.05]">
                         {s.title}
                       </h3>

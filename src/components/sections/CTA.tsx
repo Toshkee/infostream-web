@@ -1,64 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import type { Dictionary } from "@/lib/i18n/types";
 
-export function CTA() {
+export function CTA({ dict }: { dict: Dictionary["cta"] }) {
   return (
-    <section id="contact" className="bg-bone">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-28 md:py-40">
+    <section id="contact" className="bg-ink">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 pt-28 md:pt-40 pb-20 md:pb-32">
+
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 pb-20 border-b border-white/10"
         >
-          <div className="lg:col-span-8">
-            <div className="eyebrow">Get in touch</div>
-            <h2 className="display-xl mt-6 text-ink max-w-[14ch]">
-              Tell us about{" "}
-              <span className="italic font-light text-accent">the system</span>{" "}
-              you need to trust.
+          <div className="lg:col-span-7">
+            <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-accent/70 mb-6">
+              {dict.eyebrow}
+            </div>
+            <h2 className="display-xl text-cream-soft max-w-[14ch]">
+              {dict.headline.map((chunk, i) =>
+                typeof chunk === "string" ? (
+                  <span key={i}>{chunk}</span>
+                ) : (
+                  <span key={i} className="italic font-light text-accent">
+                    {chunk.text}
+                  </span>
+                ),
+              )}
             </h2>
           </div>
 
-          <div className="lg:col-span-4 space-y-6 lg:pb-6">
-            <p className="text-[1.05rem] leading-relaxed text-ink/75 max-w-sm">
-              We work directly with the people responsible for the systems
-              &mdash; not through procurement intermediaries. First conversation
-              is always with an engineer.
+          <div className="lg:col-span-4 lg:col-start-9 flex items-end">
+            <p className="text-[1.05rem] leading-relaxed text-cream-soft/55 max-w-sm">
+              {dict.intro}
             </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="mailto:info@infostream.me"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-ink px-6 text-[0.95rem] font-medium text-cream-soft hover:bg-ink-soft transition-colors"
-              >
-                info@infostream.me
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  className="transition-transform group-hover:translate-x-0.5"
-                >
-                  <path
-                    d="M2 7h10m0 0L7.5 2.5M12 7l-4.5 4.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-            </div>
-
-            <div className="pt-6 border-t border-line-soft text-[0.9rem] text-muted">
-              Podgorica, Montenegro
-            </div>
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12"
+        >
+          <div className="lg:col-span-5 space-y-8">
+            {dict.contacts.map((c) => (
+              <div key={c.label}>
+                <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-cream-soft/30 mb-2">
+                  {c.label}
+                </div>
+                <a
+                  href={c.href}
+                  className="font-display font-light text-[1.5rem] text-cream-soft/90 hover:text-accent transition-colors duration-200"
+                >
+                  {c.value}
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <div className="lg:col-span-6 lg:col-start-7 grid grid-cols-1 sm:grid-cols-3 gap-8 lg:pt-1">
+            {dict.details.map((d) => (
+              <div key={d.label}>
+                <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-cream-soft/30 mb-2">
+                  {d.label}
+                </div>
+                <p className="text-[0.88rem] leading-relaxed text-cream-soft/55 whitespace-pre-line">
+                  {d.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

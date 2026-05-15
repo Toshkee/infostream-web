@@ -1,56 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Dictionary } from "@/lib/i18n/types";
 
-export function AboutStory() {
+export function AboutStory({ dict }: { dict: Dictionary["about"]["story"] }) {
+  const { stats, paragraph } = dict;
   return (
-    <section className="bg-teal-wash border-b border-line-soft">
+    <section className="bg-ink">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-28 md:py-40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5"
-          >
-            <p className="font-display text-[clamp(1.5rem,2.2vw+0.5rem,2.4rem)] font-light italic leading-[1.2] text-accent max-w-[20ch]">
-              &ldquo;Being a reliable partner to the digital community, a responsible entity in the economic ecosystem, an initiator of positive changes and innovations.&rdquo;
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-6 lg:col-start-7 space-y-6 text-[1.05rem] leading-relaxed text-ink/75"
-          >
-            <p>
-              We are specialized in the development of enterprise IT solutions in
-              the area of finance and public services.
-            </p>
-            <p>
-              Our approach is to use a flexible and agile methodology to software
-              development with specific and strong project management, verified by
-              ISO standards in information security management and software
-              engineering, development and maintenance of software.
-            </p>
-            <p>
-              Our team of engineers and consultants, with over 20 years of
-              experience, are capable of implementing large scale enterprise IT
-              projects on time and on budget.
-            </p>
-            <p>
-              We love to govern new exciting technologies and tools that motivate
-              us to build beautiful and functional software. We leverage our deep
-              tech expertise in Oracle, Microsoft .NET, C#, MVC, Java, Angular,
-              Apex, to develop custom cutting-edge products.
-            </p>
-          </motion.div>
-
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-ink px-8 py-12 flex flex-col gap-4"
+            >
+              <span className="font-display font-light text-[clamp(3.5rem,6vw,6rem)] leading-none tracking-tight text-cream-soft/90">
+                {s.value}
+              </span>
+              <div>
+                <div className="text-[0.95rem] font-medium text-cream-soft/80 mb-1">
+                  {s.label}
+                </div>
+                <div className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-cream-soft/30">
+                  {s.sub}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Single paragraph */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-20 lg:mt-24 grid grid-cols-1 lg:grid-cols-12"
+        >
+          <p className="lg:col-span-7 lg:col-start-4 text-[1.2rem] md:text-[1.35rem] leading-relaxed text-cream-soft/60 text-center">
+            {paragraph}
+          </p>
+        </motion.div>
+
       </div>
     </section>
   );
