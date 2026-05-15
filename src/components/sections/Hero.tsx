@@ -142,27 +142,6 @@ export function Hero() {
 
             <div className="mt-12 flex flex-wrap items-center gap-4">
               <Link
-                href="#contact"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-ink px-6 text-[0.95rem] font-medium text-cream-soft hover:bg-ink-soft transition-colors"
-              >
-                Start a conversation
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  className="transition-transform group-hover:translate-x-0.5"
-                >
-                  <path
-                    d="M2 7h10m0 0L7.5 2.5M12 7l-4.5 4.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-              <Link
                 href="#what-we-do"
                 className="inline-flex h-12 items-center px-2 text-[0.95rem] font-medium text-ink underline-offset-4 hover:underline"
               >
