@@ -75,8 +75,6 @@ export const mne: Dictionary = {
     foundedValueSuffix: ", Podgorica",
     certifiedLabel: "Sertifikati",
     certifiedValue: "ISO 27001 · ISO 9001",
-    partnerLabel: "Partner",
-    partnerValue: "Bitdefender Enterprise",
   },
   trustStrip: {
     clients: [
@@ -133,7 +131,7 @@ export const mne: Dictionary = {
     ],
     details: [
       { label: "Lokacija", value: "Rista Dragićevića 4\nPodgorica 81000, Crna Gora" },
-      { label: "Registrovano", value: "Infostream d.o.o.\nPIB: 02000000" },
+      { label: "Registrovano", value: "Infostream d.o.o." },
       { label: "Sertifikati", value: "ISO 27001 · ISO 9001\nBitdefender Enterprise" },
     ],
   },
@@ -280,7 +278,7 @@ export const mne: Dictionary = {
       {
         id: "tech-languages",
         eyebrow: "T03 — Jezici i frameworci",
-        title: "Dugovječni stekovi",
+        title: "Jezici i runtajmi",
         blurb:
           "Tamo gdje ne standardizujemo na .NET, standardizujemo na jezike sa preko deset godina produkcijske istorije i velikim regionalnim talentom. Dosadno je odlika.",
         items: [
@@ -294,7 +292,7 @@ export const mne: Dictionary = {
       {
         id: "tech-security",
         eyebrow: "T04 — Infrastruktura i bezbjednost",
-        title: "Bezbjednost i operacije",
+        title: "Bitdefender GravityZone",
         blurb:
           "Suvereni hosting, ISO 27001 kontrole i Bitdefender na svakom sloju. Vježbe kontinuiteta se izvode, ne obećavaju — svaki sistem ima uvježban put nazad.",
         items: [

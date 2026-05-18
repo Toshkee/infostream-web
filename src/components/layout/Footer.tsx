@@ -25,7 +25,7 @@ export function Footer({ dict, lang }: { dict: Dictionary["footer"]; lang: Local
             <p className="mt-6 text-[0.85rem] text-muted">{dict.address}</p>
           </div>
 
-          <div className="md:col-span-7 grid grid-cols-3 gap-6">
+          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
             {columns.map((col) => (
               <div key={col.title}>
                 <div className="eyebrow mb-4">{col.title}</div>

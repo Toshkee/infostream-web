@@ -15,7 +15,7 @@ export function AboutValues({ dict }: { dict: Dictionary["about"]["values"] }) {
     <section className="bg-bone border-y border-line-soft">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-28 md:py-40">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 md:mb-24">
           <div className="lg:col-span-4">
             <div className="eyebrow">{dict.eyebrow}</div>
           </div>
@@ -26,8 +26,30 @@ export function AboutValues({ dict }: { dict: Dictionary["about"]["values"] }) {
           </div>
         </div>
 
-        {/* Tree */}
-        <div ref={ref} className="relative mx-auto max-w-4xl">
+        {/* Mobile: numbered list */}
+        <div className="md:hidden divide-y divide-line-soft">
+          {values.map((v, i) => (
+            <motion.div
+              key={v.title}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.07, ease: EASE }}
+              className="py-7"
+            >
+              <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent mb-3">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <h3 className="font-display font-light text-[1.4rem] text-ink leading-snug mb-3">
+                {v.title}
+              </h3>
+              <p className="text-[0.9rem] leading-relaxed text-ink/55">{v.body}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop: tree diagram */}
+        <div ref={ref} className="hidden md:block relative mx-auto max-w-4xl">
 
           {/* Vertical spine */}
           <motion.div

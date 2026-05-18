@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { WhatWeDo } from "@/components/sections/WhatWeDo";
+import { Statement } from "@/components/sections/Statement";
 import { CTA } from "@/components/sections/CTA";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, type Locale } from "@/lib/i18n/config";
@@ -31,6 +32,7 @@ export default async function Home({
       <Hero dict={dict.hero} />
       <TrustStrip dict={dict.trustStrip} />
       <WhatWeDo dict={dict.whatWeDo} lang={lang as Locale} />
+      <Statement />
       <CTA dict={dict.cta} />
     </>
   );

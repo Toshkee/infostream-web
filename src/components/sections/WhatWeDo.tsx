@@ -208,12 +208,14 @@ export function WhatWeDo({
 
           {/* Fork */}
           <div className="relative w-full max-w-6xl">
-            <motion.div
-              {...line(0.6, 0.45, "x")}
-              className="absolute top-0 left-[16.67%] right-[16.67%] h-px bg-line-soft"
-            />
+            <div className="hidden md:block">
+              <motion.div
+                {...line(0.6, 0.45, "x")}
+                className="absolute top-0 left-[16.67%] right-[16.67%] h-px bg-line-soft"
+              />
+            </div>
 
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-0">
               {branches.map((branch, i) => (
                 <BranchNode
                   key={branch.label}

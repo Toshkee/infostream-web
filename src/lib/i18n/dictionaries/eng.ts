@@ -75,8 +75,6 @@ export const eng: Dictionary = {
     foundedValueSuffix: ", Podgorica",
     certifiedLabel: "Certified",
     certifiedValue: "ISO 27001 · ISO 9001",
-    partnerLabel: "Partner",
-    partnerValue: "Bitdefender Enterprise",
   },
   trustStrip: {
     clients: [
@@ -133,7 +131,7 @@ export const eng: Dictionary = {
     ],
     details: [
       { label: "Location", value: "Rista Dragićevića 4\nPodgorica 81000, Montenegro" },
-      { label: "Registered", value: "Infostream d.o.o.\nPIB: 02000000" },
+      { label: "Registered", value: "Infostream d.o.o." },
       { label: "Certifications", value: "ISO 27001 · ISO 9001\nBitdefender Enterprise" },
     ],
   },
@@ -280,7 +278,7 @@ export const eng: Dictionary = {
       {
         id: "tech-languages",
         eyebrow: "T03 — Languages & frameworks",
-        title: "Long-lived stacks",
+        title: "Languages & runtimes",
         blurb:
           "Where we don't standardise on .NET, we standardise on languages with a decade-plus production history and large regional talent pools. Boring is a feature.",
         items: [
@@ -294,7 +292,7 @@ export const eng: Dictionary = {
       {
         id: "tech-security",
         eyebrow: "T04 — Infrastructure & security",
-        title: "Security & operations",
+        title: "Bitdefender GravityZone",
         blurb:
           "Sovereign hosting, ISO 27001 controls, and Bitdefender at every layer. Continuity drills are run, not promised — every system has a rehearsed path back.",
         items: [

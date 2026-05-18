@@ -6,7 +6,7 @@ import type { Dictionary } from "@/lib/i18n/types";
 
 export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"] }) {
   const services = dict;
-  const [open, setOpen] = useState<string>("01");
+  const [open, setOpen] = useState<string>("");
 
   return (
     <section className="bg-bone">
@@ -20,13 +20,13 @@ export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? "" : s.number)}
-                  className="group w-full text-left py-8 grid grid-cols-12 gap-6 items-center"
+                  className="group w-full text-left py-6 md:py-8 grid grid-cols-12 gap-4 md:gap-6 items-center"
                 >
                   <span className="col-span-1 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-accent">
                     {s.number}
                   </span>
 
-                  <h2 className={`col-span-9 font-display font-light text-[clamp(1.6rem,3vw,2.6rem)] leading-tight tracking-tight transition-colors duration-200 ${
+                  <h2 className={`col-span-9 font-display font-light text-[clamp(1.25rem,3vw,2.6rem)] leading-tight tracking-tight transition-colors duration-200 ${
                     isOpen ? "text-accent" : "text-ink group-hover:text-ink/70"
                   }`}>
                     {s.title}

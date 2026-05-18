@@ -48,8 +48,9 @@ export function ParticleCanvas() {
     const W = () => canvas.width;
     const H = () => canvas.height;
     const CONNECT = 180;
+    const CONNECT_SQ = CONNECT * CONNECT;
     const SPEED = 0.35;
-    const COUNT = Math.min(Math.floor((canvas.width * canvas.height) / 16000), 62);
+    const COUNT = Math.min(Math.floor((canvas.width * canvas.height) / 18000), 48);
 
     const particles = Array.from({ length: COUNT }, () => ({
       x: Math.random() * W(),
@@ -60,8 +61,11 @@ export function ParticleCanvas() {
     }));
 
     let raf: number;
+    let running = true;
 
     const draw = () => {
+      if (!running) return;
+
       ctx.clearRect(0, 0, W(), H());
 
       for (const p of particles) {
@@ -71,33 +75,46 @@ export function ParticleCanvas() {
         if (p.y < 0 || p.y > H()) p.vy *= -1;
       }
 
+      // Single batched path for all connecting lines (uniform alpha — avoids
+      // per-segment stroke() calls which are extremely expensive on canvas)
+      ctx.beginPath();
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECT) {
-            ctx.beginPath();
+          if (dx * dx + dy * dy < CONNECT_SQ) {
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(140,32,64,${(1 - dist / CONNECT) * 0.28})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
           }
         }
       }
+      ctx.strokeStyle = "rgba(140,32,64,0.14)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
 
+      // Single batched path for all dots
+      ctx.beginPath();
       for (const p of particles) {
-        ctx.beginPath();
+        ctx.moveTo(p.x + p.r, p.y);
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(140,32,64,0.5)";
-        ctx.fill();
       }
+      ctx.fillStyle = "rgba(140,32,64,0.5)";
+      ctx.fill();
 
       raf = requestAnimationFrame(draw);
     };
 
-    draw();
+    // Pause the RAF loop when the hero is scrolled off-screen
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        running = entry.isIntersecting;
+        if (running) raf = requestAnimationFrame(draw);
+      },
+      { threshold: 0 }
+    );
+    io.observe(canvas);
+
+    raf = requestAnimationFrame(draw);
 
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
@@ -105,6 +122,7 @@ export function ParticleCanvas() {
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      io.disconnect();
     };
   }, []);
 

@@ -32,8 +32,6 @@ export type Dictionary = {
     foundedValueSuffix: string;
     certifiedLabel: string;
     certifiedValue: string;
-    partnerLabel: string;
-    partnerValue: string;
   };
   trustStrip: { clients: string[] };
   whatWeDo: {

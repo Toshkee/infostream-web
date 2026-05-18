@@ -1,6 +1,65 @@
-# CLAUDE.md — Infostream website
+# CLAUDE.md
 
-This file gives Claude context about the project so responses stay consistent across sessions.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+---
+
+## Commands
+
+```bash
+npm run dev      # start dev server (user manages this — never start/stop it yourself)
+npm run build    # production build
+npm run lint     # ESLint check
+```
+
+No test suite yet.
+
+---
+
+## Next.js version note
+
+This project may use a Next.js version with breaking changes from older releases. Before writing any Next.js-specific code (layouts, middleware, routing, params), read the relevant guide in `node_modules/next/dist/docs/`. Heed deprecation notices. In particular, `params` in layouts and pages is now a `Promise` and must be awaited.
+
+---
+
+## Architecture
+
+### Routing and i18n
+
+All pages live under `src/app/[lang]/` where `lang` is `eng` or `mne`. `src/proxy.ts` is the Next.js middleware — it exports a function named `proxy` (not `middleware`) plus a `config` matcher, and redirects bare paths to `/eng/…` by default. `src/app/layout.tsx` is the root shell (fonts, smooth scroll); `src/app/[lang]/layout.tsx` adds Navbar and Footer with the correct locale dictionary.
+
+Pages: `/` (homepage), `/services`, `/technologies`, `/about`.
+
+Path alias: `@/` maps to `src/` — use it for all imports.
+
+### i18n pattern
+
+All UI strings live in `src/lib/i18n/dictionaries/eng.ts` and `mne.ts`. The `Dictionary` type in `src/lib/i18n/types.ts` is the single source of truth for what keys exist. `getDictionary(locale)` returns a typed object; pages receive it as a prop and pass slices down to section components. **Both language files must be updated together whenever copy changes.**
+
+The `Chunk` type (`string | { italic: true; text: string }`) is used for headline segments that mix normal and italic runs. `HeadlineLineData` pairs a chunk array with a Framer Motion delay.
+
+### Client vs server components
+
+Server components are the default. Add `"use client"` at the top of any component that uses Framer Motion, React hooks (`useRef`, `useState`, `useEffect`, `useInView`), or browser APIs. Most section components with animation are client components.
+
+### Styling
+
+Tailwind v4 with a custom theme defined in `src/app/globals.css` using `@theme`. Full color token set:
+
+- Base: `bone`, `bone-soft`, `cream`, `cream-soft`, `cream-deep`, `ink`, `ink-soft`, `muted`, `line`, `line-soft`, `accent`, `accent-soft`
+- Semantic: `background` (= `bone`), `foreground` (= `ink`)
+
+Custom utilities: `display-xl`, `display-lg`, `eyebrow`, `grain`, `marquee-track`, `streak-a` through `streak-g`. Use these instead of arbitrary values wherever they fit.
+
+Fonts: `--font-sans` = Poppins, `--font-mono` = DM Mono.
+
+### Sections
+
+Each page is assembled from small section components in `src/components/sections/`. Sections receive only the dictionary slice they need. Animation is Framer Motion scroll-triggered entrances only — no continuous motion except the hero streaks (`streak-a`…`streak-g`) and trust strip marquee (`marquee-track`).
+
+---
+
+## Company context
 
 ---
 
@@ -33,7 +92,7 @@ The previous site (Next.js, localhost:3000) served as a reference for content on
 
 | Layer | Choice |
 |---|---|
-| Framework | Next.js 14+ (App Router) |
+| Framework | Next.js 16 (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS |
 | Animations | Framer Motion |
@@ -83,35 +142,9 @@ Clients are ministries, central banks, and national institutions. The site must 
 
 ---
 
-## File structure (planned)
+## Notes
 
-```
-/app
-  /[lang]              # i18n routing: mne | eng
-    /page.tsx          # homepage
-    /what-we-do/
-    /technologies/
-    /about-us/
-    /contact/
-/components
-  /layout
-    Navbar.tsx
-    Footer.tsx
-  /sections            # homepage sections as isolated components
-  /ui                  # reusable primitives (Button, Badge, etc.)
-/lib
-  /i18n                # translation strings per language
-/public
-  /fonts
-  /images
-```
-
----
-
-## Notes for future sessions
-
-- New section ideas and design decisions will be appended here as the project evolves
 - Ask before introducing new dependencies
 - Keep components small and composable — no giant monolithic page files
 - Framer Motion: subtle scroll-triggered entrance reveals only, nothing flashy
-- This file will grow — treat it as the single source of truth for the project
+- This file is the single source of truth — append new design decisions here as the project evolves

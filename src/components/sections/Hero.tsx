@@ -73,10 +73,6 @@ export function Hero({ dict }: { dict: Dictionary["hero"] }) {
             <div className="eyebrow mb-1">{dict.certifiedLabel}</div>
             <div className="text-[1.05rem] text-ink">{dict.certifiedValue}</div>
           </div>
-          <div>
-            <div className="eyebrow mb-1">{dict.partnerLabel}</div>
-            <div className="text-[1.05rem] text-ink">{dict.partnerValue}</div>
-          </div>
         </motion.div>
 
       </div>
