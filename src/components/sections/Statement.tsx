@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 
 export function Statement() {
   return (
@@ -8,7 +8,7 @@ export function Statement() {
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 py-28 md:py-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-2">
-            <div className="eyebrow">A note</div>
+            <div className="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-teal">A note</div>
           </div>
 
           <motion.div
@@ -29,7 +29,7 @@ export function Statement() {
               <div className="font-mono text-[0.78rem] uppercase tracking-[0.18em] text-muted">
                 Operations standard &middot; In use since 2012
               </div>
-              <div className="text-[0.92rem] text-ink/70">
+              <div className="text-sm text-ink/70">
                 Continuity is the product. Everything else is implementation.
               </div>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { HeadlineLine, ParticleCanvas } from "@/components/ui/HeroAnimations";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -28,7 +28,7 @@ export function TechHero({ dict }: { dict: Dictionary["tech"]["hero"] }) {
             transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
             className="lg:col-span-5 lg:pt-4"
           >
-            <p className="max-w-xl text-lg md:text-[1.15rem] leading-relaxed text-ink/75">
+            <p className="max-w-xl text-lg md:text-lg leading-relaxed text-ink/75">
               {intro}
             </p>
           </motion.div>

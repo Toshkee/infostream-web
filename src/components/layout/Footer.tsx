@@ -9,7 +9,7 @@ export function Footer({ dict, lang }: { dict: Dictionary["footer"]; lang: Local
     href.startsWith("/") && !href.startsWith(`/${lang}`) ? `/${lang}${href}` : href;
 
   return (
-    <footer className="border-t border-line-soft bg-cream-soft/60">
+    <footer className="border-t border-line-soft bg-cream/40">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6">
           <div className="md:col-span-5">
@@ -19,10 +19,10 @@ export function Footer({ dict, lang }: { dict: Dictionary["footer"]; lang: Local
             >
               Infostream
             </Link>
-            <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-muted">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
               {dict.tagline}
             </p>
-            <p className="mt-6 text-[0.85rem] text-muted">{dict.address}</p>
+            <p className="mt-6 text-sm text-muted">{dict.address}</p>
           </div>
 
           <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
@@ -34,7 +34,7 @@ export function Footer({ dict, lang }: { dict: Dictionary["footer"]; lang: Local
                     <li key={link.label}>
                       <Link
                         href={prefix(link.href)}
-                        className="text-[0.92rem] text-ink/80 hover:text-ink transition-colors"
+                        className="text-sm text-ink/80 hover:text-ink transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -47,10 +47,10 @@ export function Footer({ dict, lang }: { dict: Dictionary["footer"]; lang: Local
         </div>
 
         <div className="mt-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t border-line-soft">
-          <p className="text-[0.8rem] text-muted">
+          <p className="text-xs text-muted">
             &copy; {new Date().getFullYear()} Infostream d.o.o. {dict.rights}
           </p>
-          <div className="flex items-center gap-6 text-[0.8rem] text-muted">
+          <div className="flex items-center gap-6 text-xs text-muted">
             <Link href="#" className="hover:text-ink transition-colors">
               {dict.privacy}
             </Link>

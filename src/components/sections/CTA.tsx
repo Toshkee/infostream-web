@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import type { Dictionary } from "@/lib/i18n/types";
 
 export function CTA({ dict }: { dict: Dictionary["cta"] }) {
@@ -33,7 +33,7 @@ export function CTA({ dict }: { dict: Dictionary["cta"] }) {
           </div>
 
           <div className="lg:col-span-4 lg:col-start-9 flex items-end">
-            <p className="text-[1.05rem] leading-relaxed text-cream-soft/55 max-w-sm">
+            <p className="text-base leading-relaxed text-cream-soft/55 max-w-sm">
               {dict.intro}
             </p>
           </div>
@@ -54,7 +54,7 @@ export function CTA({ dict }: { dict: Dictionary["cta"] }) {
                 </div>
                 <a
                   href={c.href}
-                  className="font-display font-light text-[1.5rem] text-cream-soft/90 hover:text-accent transition-colors duration-200"
+                  className="display-sm text-cream-soft/90 hover:text-accent transition-colors duration-200"
                 >
                   {c.value}
                 </a>
@@ -68,7 +68,7 @@ export function CTA({ dict }: { dict: Dictionary["cta"] }) {
                 <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-cream-soft/30 mb-2">
                   {d.label}
                 </div>
-                <p className="text-[0.88rem] leading-relaxed text-cream-soft/55 whitespace-pre-line">
+                <p className="text-sm leading-relaxed text-cream-soft/55 whitespace-pre-line">
                   {d.value}
                 </p>
               </div>

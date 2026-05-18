@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { HeadlineLine, ParticleCanvas } from "@/components/ui/HeroAnimations";
 import type { Dictionary } from "@/lib/i18n/types";
@@ -38,10 +38,10 @@ export function Hero({ dict }: { dict: Dictionary["hero"] }) {
     <section className="relative bg-bone overflow-hidden">
       <ParticleCanvas />
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-24 md:pt-36 pb-28 md:pb-44">
+<div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-24 md:pt-36 pb-28 md:pb-44">
 
         <div className="max-w-5xl">
-          <h1 className="display-xl text-ink max-w-[20ch]">
+          <h1 className="display-hero text-ink max-w-[20ch]">
             {dict.lines.map((line, i) => (
               <HeadlineLine key={i} chunks={line.text} delay={line.delay} />
             ))}
@@ -51,7 +51,7 @@ export function Hero({ dict }: { dict: Dictionary["hero"] }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
-            className="mt-10 max-w-xl text-lg md:text-[1.15rem] leading-relaxed text-ink/65"
+            className="mt-10 max-w-xl text-lg leading-relaxed text-ink/65"
           >
             {dict.intro}
           </motion.p>
@@ -65,15 +65,25 @@ export function Hero({ dict }: { dict: Dictionary["hero"] }) {
         >
           <div>
             <div className="eyebrow mb-1">{dict.foundedLabel}</div>
-            <div className="text-[1.05rem] font-medium text-ink">
+            <div className="text-base font-medium text-ink">
               <Counter from={1994} to={2004} duration={1.4} delay={0.9} />{dict.foundedValueSuffix}
             </div>
           </div>
           <div>
             <div className="eyebrow mb-1">{dict.certifiedLabel}</div>
-            <div className="text-[1.05rem] text-ink">{dict.certifiedValue}</div>
+            <div className="text-base text-ink">{dict.certifiedValue}</div>
           </div>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.0, ease: EASE }}
+          className="mt-10 font-mono text-sm tracking-[0.2em] uppercase text-teal select-none"
+          aria-hidden
+        >
+          #followthestream
+        </motion.p>
 
       </div>
     </section>

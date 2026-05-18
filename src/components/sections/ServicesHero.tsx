@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { HeadlineLine, ParticleCanvas } from "@/components/ui/HeroAnimations";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -26,7 +26,7 @@ export function ServicesHero({ dict }: { dict: Dictionary["services"]["hero"] })
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
-              className="text-[1.05rem] leading-relaxed text-ink/70"
+              className="text-base leading-relaxed text-ink/70"
             >
               {intro}
             </motion.p>

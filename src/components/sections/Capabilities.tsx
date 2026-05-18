@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { CountUp } from "@/components/ui/CountUp";
 
 type Stat = {
@@ -38,14 +38,14 @@ export function Capabilities() {
                 We ship to a standard.
               </span>
             </h2>
-            <p className="mt-8 max-w-md text-[1.05rem] leading-relaxed text-cream/70">
+            <p className="mt-8 max-w-md text-base leading-relaxed text-cream/70">
               The institutions we work with cannot tolerate a failed deploy.
               That constraint shaped a company that treats correctness,
               continuity, and audit-readiness as the baseline &mdash; not the
               ceiling.
             </p>
 
-            <div className="mt-10 inline-flex items-center gap-3 text-[0.85rem] text-cream/60">
+            <div className="mt-10 inline-flex items-center gap-3 text-sm text-cream/60">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cream/40 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-cream/80" />
@@ -77,7 +77,7 @@ export function Capabilities() {
                 <div className="font-display text-[3.5rem] md:text-[4.75rem] leading-none font-light tracking-tight text-cream tabular-nums">
                   {s.value}
                 </div>
-                <div className="text-[0.95rem] leading-snug text-cream/65 max-w-[24ch]">
+                <div className="text-sm leading-snug text-cream/65 max-w-[24ch]">
                   {s.label}
                 </div>
               </motion.div>

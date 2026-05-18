@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;

@@ -18,7 +18,7 @@ export function TrustStrip({ dict }: { dict: Dictionary["trustStrip"] }) {
               className="font-display font-light text-[1rem] text-cream-soft/90 flex items-center gap-16"
             >
               {client}
-              <span aria-hidden className="text-accent/30 text-[0.6rem]">◆</span>
+              <span aria-hidden className="text-teal text-[0.6rem]">◆</span>
             </span>
           ))}
         </div>

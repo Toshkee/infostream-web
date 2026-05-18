@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -11,11 +11,11 @@ type Visual = {
 
 const visuals: Record<string, Visual> = {
   "tech-oracle": {
-    illustration: "/images/illustrations/oracle.png",
+    illustration: "/images/illustrations/oracle.webp",
     tone: { panel: "bg-[#ffe2dd]", accent: "text-[#e8332a]", accentSoft: "bg-[#e8332a]" },
   },
   "tech-dotnet": {
-    illustration: "/images/illustrations/dotnetmvc.png",
+    illustration: "/images/illustrations/dotnetmvc.webp",
     tone: { panel: "bg-[#ede1ff]", accent: "text-[#7c3aed]", accentSoft: "bg-[#7c3aed]" },
   },
   "tech-languages": {
@@ -53,7 +53,7 @@ export function TechGrid({ dict }: { dict: Dictionary["tech"]["grid"] }) {
                   duration: 0.7,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group rounded-2xl border border-line-soft bg-bone-soft overflow-hidden scroll-mt-24"
+                className="group rounded-2xl border border-line-soft bg-bone overflow-hidden scroll-mt-24"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                   <div
@@ -81,10 +81,10 @@ export function TechGrid({ dict }: { dict: Dictionary["tech"]["grid"] }) {
                     }`}
                   >
                     <div>
-                      <h3 className="font-display text-[clamp(2rem,2.5vw+0.75rem,3rem)] font-light tracking-tight text-ink leading-[1.05]">
+                      <h3 className="display-md text-ink">
                         {s.title}
                       </h3>
-                      <p className="mt-5 text-[1.02rem] leading-relaxed text-ink/70 max-w-md">
+                      <p className="mt-5 text-base leading-relaxed text-ink/70 max-w-md">
                         {s.blurb}
                       </p>
 
@@ -92,7 +92,7 @@ export function TechGrid({ dict }: { dict: Dictionary["tech"]["grid"] }) {
                         {s.items.map((item) => (
                           <li
                             key={item}
-                            className="flex items-baseline gap-3 text-[0.95rem] text-ink/85"
+                            className="flex items-baseline gap-3 text-sm text-ink/85"
                           >
                             <span
                               className={`inline-block w-1 h-1 rounded-full shrink-0 translate-y-[-3px] ${s.tone.accentSoft}`}

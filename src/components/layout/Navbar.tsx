@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/i18n/types";
@@ -77,7 +77,7 @@ export function Navbar({ dict, lang }: { dict: Dictionary["nav"]; lang: Locale }
                   <Link
                     key={l.href}
                     href={l.href}
-                    className={`relative text-[0.85rem] transition-colors duration-150 ${
+                    className={`relative text-sm transition-colors duration-150 ${
                       active ? "text-ink" : "text-ink/65 hover:text-ink"
                     }`}
                   >
@@ -117,7 +117,7 @@ export function Navbar({ dict, lang }: { dict: Dictionary["nav"]; lang: Locale }
             {/* Desktop CTA */}
             <Link
               href={`/${lang}#contact`}
-              className="hidden md:inline-flex h-9 items-center gap-1.5 rounded-full border border-accent px-5 text-[0.8rem] font-medium text-accent hover:bg-accent hover:text-bone-soft transition-all duration-150"
+              className="hidden md:inline-flex h-9 items-center gap-1.5 rounded-full border border-accent px-5 text-xs font-medium text-accent hover:bg-accent hover:text-bone-soft transition-all duration-150"
             >
               {dict.contact}
             </Link>
@@ -174,12 +174,12 @@ export function Navbar({ dict, lang }: { dict: Dictionary["nav"]; lang: Locale }
                       <Link
                         href={l.href}
                         onClick={() => setMobileOpen(false)}
-                        className={`flex items-center justify-between py-5 border-b border-line-soft/60 text-[1.15rem] transition-colors duration-150 ${
+                        className={`flex items-center justify-between py-5 border-b border-line-soft/60 text-lg transition-colors duration-150 ${
                           active ? "text-accent" : "text-ink/75 hover:text-ink"
                         }`}
                       >
                         {l.label}
-                        <span className="text-[0.85rem] text-ink/25">→</span>
+                        <span className="text-sm text-ink/25">→</span>
                       </Link>
                     </motion.div>
                   );
@@ -195,7 +195,7 @@ export function Navbar({ dict, lang }: { dict: Dictionary["nav"]; lang: Locale }
                 <Link
                   href={`/${lang}#contact`}
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex w-full justify-center h-12 items-center rounded-full border border-accent px-6 text-[0.9rem] font-medium text-accent hover:bg-accent hover:text-bone-soft transition-all duration-200"
+                  className="inline-flex w-full justify-center h-12 items-center rounded-full border border-accent px-6 text-sm font-medium text-accent hover:bg-accent hover:text-bone-soft transition-all duration-200"
                 >
                   {dict.contact}
                 </Link>

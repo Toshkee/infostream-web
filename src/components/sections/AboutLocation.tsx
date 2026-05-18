@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -28,7 +28,7 @@ export function AboutLocation({ dict }: { dict: Dictionary["about"]["location"] 
                 ),
               )}
             </h2>
-            <p className="mt-8 text-[1.05rem] leading-relaxed text-cream/60 max-w-sm">
+            <p className="mt-8 text-base leading-relaxed text-cream/60 max-w-sm">
               {dict.body}
             </p>
           </motion.div>
@@ -45,7 +45,7 @@ export function AboutLocation({ dict }: { dict: Dictionary["about"]["location"] 
                 <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-cream/30 mb-3">
                   {dict.addressLabel}
                 </div>
-                <address className="not-italic text-[0.95rem] leading-relaxed text-cream/70">
+                <address className="not-italic text-sm leading-relaxed text-cream/70">
                   {dict.addressLines.map((l, i) => (
                     <span key={i}>
                       {l}
@@ -62,7 +62,7 @@ export function AboutLocation({ dict }: { dict: Dictionary["about"]["location"] 
                   </div>
                   <Link
                     href="mailto:info@infostream.co.me"
-                    className="text-[0.95rem] text-cream/70 hover:text-cream/90 transition-colors"
+                    className="text-sm text-cream/70 hover:text-cream/90 transition-colors"
                   >
                     info@infostream.co.me
                   </Link>
@@ -74,7 +74,7 @@ export function AboutLocation({ dict }: { dict: Dictionary["about"]["location"] 
                   </div>
                   <Link
                     href="mailto:servicedesk@infostream.co.me"
-                    className="text-[0.95rem] text-cream/70 hover:text-cream/90 transition-colors"
+                    className="text-sm text-cream/70 hover:text-cream/90 transition-colors"
                   >
                     servicedesk@infostream.co.me
                   </Link>
@@ -86,7 +86,7 @@ export function AboutLocation({ dict }: { dict: Dictionary["about"]["location"] 
                   </div>
                   <Link
                     href="tel:+38220664808"
-                    className="text-[0.95rem] text-cream/70 hover:text-cream/90 transition-colors"
+                    className="text-sm text-cream/70 hover:text-cream/90 transition-colors"
                   >
                     +382 (0) 20 664 808
                   </Link>

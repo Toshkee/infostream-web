@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import type { Dictionary } from "@/lib/i18n/types";
 
 export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"] }) {
@@ -26,7 +26,7 @@ export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"
                     {s.number}
                   </span>
 
-                  <h2 className={`col-span-9 font-display font-light text-[clamp(1.25rem,3vw,2.6rem)] leading-tight tracking-tight transition-colors duration-200 ${
+                  <h2 className={`col-span-9 display-md transition-colors duration-200 ${
                     isOpen ? "text-accent" : "text-ink group-hover:text-ink/70"
                   }`}>
                     {s.title}
@@ -36,7 +36,7 @@ export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      className={`text-[1.4rem] font-light leading-none transition-colors duration-200 ${
+                      className={`text-2xl font-light leading-none transition-colors duration-200 ${
                         isOpen ? "text-accent" : "text-ink/30 group-hover:text-ink/50"
                       }`}
                     >
@@ -60,7 +60,7 @@ export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"
 
                         {/* Description + clients */}
                         <div className="lg:col-span-4 lg:col-start-2">
-                          <p className="text-[1.05rem] leading-relaxed text-ink/65 mb-8">
+                          <p className="text-base leading-relaxed text-ink/65 mb-8">
                             {s.description}
                           </p>
                           <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-accent/70 leading-loose border-t border-line-soft pt-5">
@@ -78,10 +78,10 @@ export function ServicesDetail({ dict }: { dict: Dictionary["services"]["detail"
                               transition={{ duration: 0.35, delay: 0.1 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
                               className="py-5"
                             >
-                              <h3 className="text-[0.9rem] font-medium text-ink mb-1.5">
+                              <h3 className="text-sm font-medium text-ink mb-1.5">
                                 {c.name}
                               </h3>
-                              <p className="text-[0.85rem] leading-relaxed text-ink/50">
+                              <p className="text-sm leading-relaxed text-ink/50">
                                 {c.body}
                               </p>
                             </motion.li>

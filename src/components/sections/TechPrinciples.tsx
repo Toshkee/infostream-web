@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -32,7 +32,7 @@ export function TechPrinciples({ dict }: { dict: Dictionary["tech"]["principles"
             </h2>
           </div>
           <div className="lg:col-span-7 lg:col-start-6 lg:pt-3">
-            <p className="text-[1.1rem] leading-relaxed text-ink/70 max-w-2xl">
+            <p className="text-lg leading-relaxed text-ink/70 max-w-2xl">
               {dict.intro}
             </p>
           </div>
@@ -52,10 +52,10 @@ export function TechPrinciples({ dict }: { dict: Dictionary["tech"]["principles"
               <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent mb-3">
                 {p.n}
               </div>
-              <h3 className="font-display font-light text-[1.4rem] text-ink leading-snug mb-3 tracking-tight">
+              <h3 className="display-sm text-ink mb-3">
                 {p.title}.
               </h3>
-              <p className="text-[0.9rem] leading-relaxed text-ink/55">{p.body}</p>
+              <p className="text-sm leading-relaxed text-ink/55">{p.body}</p>
             </motion.div>
           ))}
         </div>
@@ -122,10 +122,10 @@ export function TechPrinciples({ dict }: { dict: Dictionary["tech"]["principles"
                     className={`w-[46%] relative z-10 ${isLeft ? "mr-auto" : "ml-auto"}`}
                   >
                     <div className="border border-line bg-bone p-7 group hover:border-ink/20 transition-colors duration-300">
-                      <h3 className="font-display font-light text-[clamp(1.15rem,1.6vw+0.3rem,1.6rem)] text-ink leading-snug mb-3 tracking-tight">
+                      <h3 className="display-sm text-ink mb-3">
                         {p.title}.
                       </h3>
-                      <p className="text-[0.88rem] leading-relaxed text-ink/55">
+                      <p className="text-sm leading-relaxed text-ink/55">
                         {p.body}
                       </p>
                     </div>

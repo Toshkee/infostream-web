@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 
 const phases = [
   {
@@ -43,7 +43,7 @@ export function Process() {
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6 lg:pt-3">
-            <p className="text-[1.1rem] leading-relaxed text-ink/75 max-w-2xl">
+            <p className="text-lg leading-relaxed text-ink/75 max-w-2xl">
               Four phases, applied with the same rigour to a six-week
               integration as to a multi-year national programme. The phase
               boundaries exist so that go / no-go decisions are explicit, never
@@ -78,13 +78,13 @@ export function Process() {
               </div>
 
               <div className="lg:col-span-5">
-                <h3 className="font-display text-[clamp(1.5rem,2vw+0.5rem,2rem)] font-light tracking-tight text-ink">
+                <h3 className="display-md text-ink">
                   {p.title}
                 </h3>
               </div>
 
               <div className="lg:col-span-4">
-                <p className="text-[1rem] leading-relaxed text-ink/75">
+                <p className="text-base leading-relaxed text-ink/75">
                   {p.body}
                 </p>
               </div>

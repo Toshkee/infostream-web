@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -20,7 +20,7 @@ export function AboutValues({ dict }: { dict: Dictionary["about"]["values"] }) {
             <div className="eyebrow">{dict.eyebrow}</div>
           </div>
           <div className="lg:col-span-7">
-            <p className="text-[1.1rem] leading-relaxed text-ink/70 max-w-2xl">
+            <p className="text-lg leading-relaxed text-ink/70 max-w-2xl">
               {dict.intro}
             </p>
           </div>
@@ -40,10 +40,10 @@ export function AboutValues({ dict }: { dict: Dictionary["about"]["values"] }) {
               <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent mb-3">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <h3 className="font-display font-light text-[1.4rem] text-ink leading-snug mb-3">
+              <h3 className="display-sm text-ink mb-3">
                 {v.title}
               </h3>
-              <p className="text-[0.9rem] leading-relaxed text-ink/55">{v.body}</p>
+              <p className="text-sm leading-relaxed text-ink/55">{v.body}</p>
             </motion.div>
           ))}
         </div>
@@ -109,10 +109,10 @@ export function AboutValues({ dict }: { dict: Dictionary["about"]["values"] }) {
                     transition={{ duration: 0.55, delay: 0.75 + i * 0.15, ease: EASE }}
                     className={`w-[46%] relative z-10 bg-bone ${isLeft ? "mr-auto text-left pr-6" : "ml-auto text-left pl-6"}`}
                   >
-                    <h3 className="font-display font-light text-[clamp(1.1rem,1.5vw+0.3rem,1.5rem)] text-ink leading-snug mb-3">
+                    <h3 className="display-sm text-ink mb-3">
                       {v.title}
                     </h3>
-                    <p className="text-[0.88rem] leading-relaxed text-ink/55">
+                    <p className="text-sm leading-relaxed text-ink/55">
                       {v.body}
                     </p>
                   </motion.div>

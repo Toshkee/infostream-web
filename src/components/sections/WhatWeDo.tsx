@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { m as motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/config";
@@ -66,7 +66,7 @@ function ServiceItem({ label, desc, inView, scrambleDelay }: { label: string; de
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <span className="text-[0.82rem] text-ink/60 leading-snug select-none group-hover:text-ink/80 transition-colors duration-150">
+      <span className="text-xs text-ink/60 leading-snug select-none group-hover:text-ink/80 transition-colors duration-150">
         {scrambled}
       </span>
       <AnimatePresence>
@@ -75,7 +75,7 @@ function ServiceItem({ label, desc, inView, scrambleDelay }: { label: string; de
             initial={{ opacity: 0, y: 6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.18, delay: 0.5, ease: EASE } }}
             exit={{ opacity: 0, y: 6, scale: 0.97, transition: { duration: 0.12, ease: EASE } }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 z-30 w-56 bg-ink text-cream-soft text-[0.75rem] leading-relaxed px-4 py-3 pointer-events-none shadow-lg"
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 z-30 w-56 bg-ink text-cream-soft text-xs leading-relaxed px-4 py-3 pointer-events-none shadow-lg"
           >
             <div className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-cream-soft/50 mb-1">{label}</div>
             {desc}
@@ -179,10 +179,10 @@ export function WhatWeDo({
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
           <div className="lg:col-span-4">
-            <div className="eyebrow">{dict.eyebrow}</div>
+            <div className="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-teal">{dict.eyebrow}</div>
           </div>
           <div className="lg:col-span-8">
-            <p className="text-[1.1rem] leading-relaxed text-ink/70 max-w-2xl">
+            <p className="text-lg leading-relaxed text-ink/70 max-w-2xl">
               {dict.intro}
             </p>
           </div>
@@ -234,7 +234,7 @@ export function WhatWeDo({
         <div className="mt-16 flex justify-center">
           <Link
             href={`/${lang}/services`}
-            className="inline-flex items-center gap-2 text-[0.9rem] font-medium text-accent/60 hover:text-accent transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent/60 hover:text-accent transition-colors group"
           >
             {dict.seeFullServices}
             <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>

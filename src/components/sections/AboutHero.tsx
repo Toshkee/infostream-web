@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { HeadlineLine, ParticleCanvas } from "@/components/ui/HeroAnimations";
 import type { Dictionary } from "@/lib/i18n/types";
 
@@ -35,7 +35,7 @@ export function AboutHero({ dict }: { dict: Dictionary["about"]["hero"] }) {
                   <div className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent/70 mb-1">
                     {f.label}
                   </div>
-                  <div className="text-[0.95rem] text-ink leading-snug">{f.value}</div>
+                  <div className="text-sm text-ink leading-snug">{f.value}</div>
                 </div>
               ))}
             </div>

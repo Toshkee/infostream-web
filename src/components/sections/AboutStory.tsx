@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import type { Dictionary } from "@/lib/i18n/types";
 
 export function AboutStory({ dict }: { dict: Dictionary["about"]["story"] }) {
@@ -24,7 +24,7 @@ export function AboutStory({ dict }: { dict: Dictionary["about"]["story"] }) {
                 {s.value}
               </span>
               <div>
-                <div className="text-[0.95rem] font-medium text-cream-soft/80 mb-1">
+                <div className="text-sm font-medium text-cream-soft/80 mb-1">
                   {s.label}
                 </div>
                 <div className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-cream-soft/30">
@@ -43,7 +43,7 @@ export function AboutStory({ dict }: { dict: Dictionary["about"]["story"] }) {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-20 lg:mt-24 grid grid-cols-1 lg:grid-cols-12"
         >
-          <p className="lg:col-span-7 lg:col-start-4 text-[1.2rem] md:text-[1.35rem] leading-relaxed text-cream-soft/60 text-center">
+          <p className="lg:col-span-7 lg:col-start-4 text-xl md:text-2xl leading-relaxed text-cream-soft/60 text-center">
             {paragraph}
           </p>
         </motion.div>
